@@ -38,6 +38,26 @@ object Main {
 
     loop(0, 0, chars)
   }
+  
+  // Version 2.0 - better
+  def balance(chars: List[Char]): Boolean = {
+  def loop(check: Int, chars: List[Char]): Boolean = {
+    if (chars.isEmpty && temp == 0)
+      true
+    else if (check != 0) false
+    else
+      chars.head match {
+        case '(' => loop(check + 1, chars.tail)
+        case ')' => loop(check - 1, chars.tail)
+        case _ => loop(check, chars.tail)
+      }
+    }
+  
+    loop(0, chars)
+  }
+  balance("((())))(".toList)
+  balance("(".toList)
+  balance("((".toList)
 
 
   // Version 2.0 - better
